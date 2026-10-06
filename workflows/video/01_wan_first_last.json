@@ -1,0 +1,920 @@
+{
+  "id": "ad4515b0-3c90-5900-aeb7-ead4b2642323",
+  "revision": 0,
+  "last_node_id": 61,
+  "last_link_id": 127,
+  "nodes": [
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        413,
+        389
+      ],
+      "size": [
+        425.27801513671875,
+        180.6060791015625
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 75
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            98
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "waiting, pause before attack, idle pose, delayed reaction, slow anticipation, slow motion, one fighter moving only after the other stops, turn-based fighting, hesitant attack, staged demonstration, identity morph, red man transforming into blue man, blended face, merged bodies, swapped faces, swapped costumes, swapped weapons, blue spear growing from red body, extra person, third person, duplicate body, duplicate weapon, two swords, two spears, extra spearhead, multiple weapon contact points, weapons missing each other, sword passing through spear, spear passing through body, broken spear, bent spear, shortened spear, rubber weapon, malformed hands, fused fingers, extra fingers, extra limbs, sliding, gliding, frozen legs, floating boots, teleporting, overhead jump, spinning, camera orbit, strong zoom, background change, scene cut, crossfade ghost, temporal flicker, warping, melting, blurry face, feminine face, waxy skin, plastic doll, anime, cartoon, text, subtitle, watermark, border, black bars"
+      ]
+    },
+    {
+      "id": 54,
+      "type": "ModelSamplingSD3",
+      "pos": [
+        486.4836120605469,
+        -69.28914642333984
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 110
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            125
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelSamplingSD3"
+      },
+      "widgets_values": [
+        8.000000000000002
+      ]
+    },
+    {
+      "id": 55,
+      "type": "ModelSamplingSD3",
+      "pos": [
+        484.0019836425781,
+        54.46213912963867
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 112
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            123
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelSamplingSD3"
+      },
+      "widgets_values": [
+        8
+      ]
+    },
+    {
+      "id": 58,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        1262.509765625,
+        -26.73247528076172
+      ],
+      "size": [
+        304.748046875,
+        334
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 123
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 121
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 122
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 113
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            124
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerAdvanced"
+      },
+      "widgets_values": [
+        "disable",
+        0,
+        "fixed",
+        20,
+        3.5,
+        "euler",
+        "simple",
+        10,
+        10000,
+        "disable"
+      ]
+    },
+    {
+      "id": 38,
+      "type": "CLIPLoader",
+      "pos": [
+        30,
+        190
+      ],
+      "size": [
+        360,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            74,
+            75
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+        "wan",
+        "default"
+      ]
+    },
+    {
+      "id": 37,
+      "type": "UNETLoader",
+      "pos": [
+        30,
+        -70
+      ],
+      "size": [
+        430,
+        82
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            110
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "wan2.2_i2v_14b_fp8/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 56,
+      "type": "UNETLoader",
+      "pos": [
+        30,
+        60
+      ],
+      "size": [
+        430,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            112
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "wan2.2_i2v_14b_fp8/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        30,
+        340
+      ],
+      "size": [
+        360,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            76,
+            99
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "wan_2.1_vae.safetensors"
+      ]
+    },
+    {
+      "id": 59,
+      "type": "Note",
+      "pos": [
+        -202.05557250976562,
+        -57.859466552734375
+      ],
+      "size": [
+        210,
+        159.49227905273438
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "上传自己的输入素材，选择已安装的模型。生成与剪辑步骤见仓库 README。"
+      ],
+      "title": "使用说明"
+    },
+    {
+      "id": 60,
+      "type": "Note",
+      "pos": [
+        -200,
+        340
+      ],
+      "size": [
+        210,
+        159.49227905273438
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "上传自己的输入素材，选择已安装的模型。生成与剪辑步骤见仓库 README。"
+      ],
+      "title": "使用说明"
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1590,
+        -20
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 124
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            56,
+            93
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 47,
+      "type": "SaveWEBM",
+      "pos": [
+        2530,
+        -20
+      ],
+      "size": [
+        763.67041015625,
+        885.67041015625
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 93
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveWEBM"
+      },
+      "widgets_values": [
+        "example/video/savewebm_47",
+        "vp9",
+        24.0,
+        8.0
+      ]
+    },
+    {
+      "id": 57,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        893.0060424804688,
+        -29.923471450805664
+      ],
+      "size": [
+        304.748046875,
+        334
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 125
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 118
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 119
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 120
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            113
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerAdvanced"
+      },
+      "widgets_values": [
+        "enable",
+        73101001,
+        "randomize",
+        20,
+        3.5,
+        "euler",
+        "simple",
+        0,
+        10,
+        "enable"
+      ]
+    },
+    {
+      "id": 28,
+      "type": "SaveAnimatedWEBP",
+      "pos": [
+        1820,
+        -20
+      ],
+      "size": [
+        674.6224975585938,
+        820.6224975585938
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 56
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "example/video/saveanimatedwebp_28",
+        24,
+        false,
+        90,
+        "default"
+      ]
+    },
+    {
+      "id": 50,
+      "type": "WanFirstLastFrameToVideo",
+      "pos": [
+        491.7362060546875,
+        617.798095703125
+      ],
+      "size": [
+        342.5999755859375,
+        210
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 97
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 98
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 99
+        },
+        {
+          "name": "clip_vision_start_image",
+          "shape": 7,
+          "type": "CLIP_VISION_OUTPUT",
+          "link": null
+        },
+        {
+          "name": "clip_vision_end_image",
+          "shape": 7,
+          "type": "CLIP_VISION_OUTPUT",
+          "link": null
+        },
+        {
+          "name": "start_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 126
+        },
+        {
+          "name": "end_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 127
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            118,
+            121
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "slot_index": 1,
+          "links": [
+            119,
+            122
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "slot_index": 2,
+          "links": [
+            120
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "WanFirstLastFrameToVideo"
+      },
+      "widgets_values": [
+        1280,
+        720,
+        33,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415,
+        186
+      ],
+      "size": [
+        422.84503173828125,
+        164.31304931640625
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 74
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            97
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "Create one continuous cinematic action transition using both supplied keyframes as strict anchors. Begin exactly from the supplied start image: the red swordsman alone on the right side of the reflective lake, facing and aiming toward screen-left with his single red-and-gold sword. From the first frame, both fighters act simultaneously with no anticipation pause: the red swordsman immediately drives his front boot into the water and snaps his sword upward into a diagonal parry at the exact same instant that the blue spearhead is already entering rapidly from the left edge. The blue spearman follows directly behind his spear in one explosive low lunge from screen-left, propelled by a hard rear-foot push. Both bodies accelerate toward the center together; neither man waits for the other to finish a move. Their weapons close the distance in one fast beat and collide immediately. Preserve the red swordsman's face, crimson-black costume and sword throughout; introduce the blue spearman as a separate second man with his own teal-black costume and long spear, never by transforming the red man. Finish exactly on the supplied end image with both complete men, blue on the left and red on the right, their one spear and one sword meeting once at a single weapon contact point between them. The final impact creates one restrained white spark and a narrow burst of water droplets. Maintain the left-to-right versus right-to-left action axis, full-body readability, coherent foot contact, straight rigid weapons, realistic hair and robe inertia, stable wide 16:9 framing and premium semi-realistic wuxia cinematography."
+      ]
+    },
+    {
+      "id": 52,
+      "type": "LoadImage",
+      "pos": [
+        -50,
+        550
+      ],
+      "size": [
+        450,
+        540
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            126
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "first_frame.png",
+        "image"
+      ],
+      "title": "起始画面"
+    },
+    {
+      "id": 61,
+      "type": "LoadImage",
+      "pos": [
+        -50,
+        1130
+      ],
+      "size": [
+        450,
+        540
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            127
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "last_frame.png",
+        "image"
+      ],
+      "title": "结束画面"
+    }
+  ],
+  "links": [
+    [
+      56,
+      8,
+      0,
+      28,
+      0,
+      "IMAGE"
+    ],
+    [
+      74,
+      38,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      75,
+      38,
+      0,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      76,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      93,
+      8,
+      0,
+      47,
+      0,
+      "IMAGE"
+    ],
+    [
+      97,
+      6,
+      0,
+      50,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      98,
+      7,
+      0,
+      50,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      99,
+      39,
+      0,
+      50,
+      2,
+      "VAE"
+    ],
+    [
+      110,
+      37,
+      0,
+      54,
+      0,
+      "MODEL"
+    ],
+    [
+      112,
+      56,
+      0,
+      55,
+      0,
+      "MODEL"
+    ],
+    [
+      113,
+      57,
+      0,
+      58,
+      3,
+      "LATENT"
+    ],
+    [
+      118,
+      50,
+      0,
+      57,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      119,
+      50,
+      1,
+      57,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      120,
+      50,
+      2,
+      57,
+      3,
+      "LATENT"
+    ],
+    [
+      121,
+      50,
+      0,
+      58,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      122,
+      50,
+      1,
+      58,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      123,
+      55,
+      0,
+      58,
+      0,
+      "MODEL"
+    ],
+    [
+      124,
+      58,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      125,
+      54,
+      0,
+      57,
+      0,
+      "MODEL"
+    ],
+    [
+      126,
+      52,
+      0,
+      50,
+      5,
+      "IMAGE"
+    ],
+    [
+      127,
+      61,
+      0,
+      50,
+      6,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.1167815779425299,
+      "offset": [
+        229.4669275491141,
+        115.0852193902741
+      ]
+    }
+  },
+  "version": 0.4
+}

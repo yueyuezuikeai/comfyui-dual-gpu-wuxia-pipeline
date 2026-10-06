@@ -1,0 +1,371 @@
+{
+  "last_node_id": 7,
+  "last_link_id": 6,
+  "nodes": [
+    {
+      "type": "Note",
+      "size": [
+        1040,
+        210
+      ],
+      "flags": {},
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "Note"
+      },
+      "id": 1,
+      "pos": [
+        20,
+        -230
+      ],
+      "order": 0,
+      "widgets_values": [
+        "上传自己的输入素材，选择已安装的模型。生成与剪辑步骤见仓库 README。"
+      ],
+      "title": "使用说明"
+    },
+    {
+      "type": "LoadVideo",
+      "size": [
+        430,
+        390
+      ],
+      "flags": {},
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadVideo"
+      },
+      "id": 2,
+      "pos": [
+        20,
+        0
+      ],
+      "order": 1,
+      "widgets_values": [
+        "wuxia_picture_cut_v2_silent_hd720.mp4"
+      ]
+    },
+    {
+      "type": "HunyuanVideoFoley",
+      "size": [
+        540,
+        720
+      ],
+      "flags": {},
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "shape": 7,
+          "link": 1
+        },
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video_path",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "video_frames",
+          "type": "IMAGE",
+          "links": [
+            4
+          ]
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            2,
+            3,
+            5
+          ]
+        },
+        {
+          "name": "status_message",
+          "type": "STRING",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "HunyuanVideoFoley"
+      },
+      "id": 3,
+      "pos": [
+        550,
+        0
+      ],
+      "order": 2,
+      "widgets_values": [
+        "Hard sword and spear clashes with bright steel ringing, fast blade whooshes. A huge dragon roars deeply and crashes into a sword. Heavy impact, rushing water, boots sliding and splashing. Water blades whistle and shatter during rapid spear parries. Quiet lake wind at the opening and ending. Forceful foreground combat sounds.",
+        4.5,
+        50,
+        1,
+        2026100611,
+        "fixed",
+        24.0,
+        "music, singing, speech, narration, continuous waterfall, constant surf, quiet distant clinks, soft tapping, distortion, clipping, hiss",
+        "frames",
+        "example/audio/foley",
+        "full_fight_v5_",
+        1,
+        1,
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "type": "SaveAudio",
+      "size": [
+        350,
+        110
+      ],
+      "flags": {},
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveAudio"
+      },
+      "id": 4,
+      "pos": [
+        1180,
+        210
+      ],
+      "order": 4,
+      "widgets_values": [
+        "example/audio/saveaudio_4"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "PreviewAudio",
+      "pos": [
+        1180,
+        365
+      ],
+      "size": [
+        315,
+        76
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 6,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1570,
+        0
+      ],
+      "size": [
+        460,
+        430
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 5,
+          "shape": 7
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 24,
+        "loop_count": 0,
+        "filename_prefix": "example/audio/video_sfx_6",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 18,
+        "save_metadata": false,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true
+      }
+    },
+    {
+      "id": 7,
+      "type": "PreviewAny",
+      "pos": [
+        1180,
+        0
+      ],
+      "size": [
+        350,
+        165
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 3,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      3,
+      0,
+      "VIDEO"
+    ],
+    [
+      2,
+      3,
+      2,
+      4,
+      0,
+      "AUDIO"
+    ],
+    [
+      3,
+      3,
+      2,
+      5,
+      0,
+      "AUDIO"
+    ],
+    [
+      4,
+      3,
+      1,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      3,
+      2,
+      6,
+      1,
+      "AUDIO"
+    ],
+    [
+      6,
+      3,
+      3,
+      7,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.63,
+      "offset": [
+        50,
+        290
+      ]
+    }
+  },
+  "version": 0.4,
+  "id": "971acb8f-ad47-4df1-bcfe-e0108dc1ea6e",
+  "revision": 0
+}
